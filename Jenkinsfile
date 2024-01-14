@@ -3,7 +3,7 @@ pipeline {
     stages {
         stages('Clone') {
             steps{
-                git 'https://github.com/nhdang002/UIT-src.git'
+                git branch: 'main', url: 'https://github.com/nhdang002/UIT-src.git'
             }
         }
     }
