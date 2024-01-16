@@ -2,7 +2,6 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_IMAGE = 'jenkins/jenkins:latest'
         DOCKER_HUB_CREDENTIALS = 'docker-hub' // Credential ID for Docker Hub
     }
 
@@ -19,8 +18,8 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
-                        def customImage = docker.build("${DOCKER_IMAGE}:${env.BUILD_NUMBER}")
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                        def customImage = docker.build('nhdang002:latest', '-f Dockerfile .')
                         customImage.push()
                     }
                 }
