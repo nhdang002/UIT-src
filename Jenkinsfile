@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     // Bước chạy mô hình đã được huấn luyện
-                    sh "python run_trained_model.py ${MODEL_FILE}"
+                    sh "python run_trained_model.h5 ${MODEL_FILE}"
                 }
             }
         }
