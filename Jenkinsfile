@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_IMAGE = 'nhdang002/UIT-src'
+        DOCKER_IMAGE = 'jenkins/jenkins:latest'
         DOCKER_HUB_CREDENTIALS = 'docker-hub' // Credential ID for Docker Hub
     }
 
