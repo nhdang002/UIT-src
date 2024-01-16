@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     // Add steps to run trained model if needed
-                    sh "python run_trained_model.py ${MODEL_FILE}"
+                    sh "python run_trained_model.py #$MODEL_FILE}"
                 }
             }
         }
