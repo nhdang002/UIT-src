@@ -18,21 +18,14 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
-                        def customImage = docker.build('nhdang002:latest', '-f Dockerfile .')
-                        customImage.push()
+                    withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
+                        sh 'docker build -t haidang1412/testmodel .'
+                        sh 'docker push haidang1412/testmodel'
                     }
                 }
             }
         }
-        stage('Deploy to Production') {
-            steps {
-                script {
-                    // Add steps to deploy to production if needed
-                    sh "kubectl apply -f ./production.yaml"
-                }
-            }
-        }
+        
     }
 
     post {
