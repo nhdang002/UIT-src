@@ -26,24 +26,6 @@ pipeline {
                 }
             }
         }
-"""
-        stage('Run Trained Model') {
-            steps {
-                script {
-                    // Add steps to run trained model if needed
-                    sh "python run_trained_model.py #$MODEL_FILE}"
-                }
-            }
-        }
-
-        stage('Check for Code Duplication') {
-            steps {
-                script {
-                    sh "python check_code_duplication.py"
-                }
-            }
-        }"""
-
         stage('Deploy to Production') {
             steps {
                 script {
