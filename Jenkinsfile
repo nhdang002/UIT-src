@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
+                    withDockerRegistry(credentialsId: 'docker-hub1', url: 'https://index.docker.io/v1/')  {
                         sh 'docker build -t haidang1412/testmodel .'
                         sh 'docker push haidang1412/testmodel'
                     }
