@@ -1,0 +1,6 @@
+version: "3.3"
+services:
+  flask-app:
+    image: nhdang002/UIT-src:latest
+    ports:
+      - "5000:5000"
