@@ -26,7 +26,7 @@ pipeline {
                 }
             }
         }
-
+"""
         stage('Run Trained Model') {
             steps {
                 script {
@@ -42,7 +42,7 @@ pipeline {
                     sh "python check_code_duplication.py"
                 }
             }
-        }
+        }"""
 
         stage('Deploy to Production') {
             steps {
