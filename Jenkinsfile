@@ -6,34 +6,24 @@ pipeline {
     }
 
     stages {
-        stage('Checkout and Clone') {
+        stage('Clone') {
             steps {
-                script {
-                    git branch: 'main', url: 'https://github.com/nhdang002/UIT-src.git'
-                }
+                
+                git branch: 'main', url: 'https://github.com/nhdang002/UIT-src.git'
+            
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                script {
                     // Build Docker image
-                    withDockerRegistry(credentialsId: 'docker-hub1', url: 'https://index.docker.io/v1/')  {
-                        sh 'docker build -t haidang1412/testmodel .'
-                        sh 'docker push haidang1412/testmodel'
-                    }
+                    withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
+                        sh 'docker build -t haidang1412/mlops:test1 .'
+                        sh 'docker push haidang1412/mlops'
+                    
                 }
             }
         }
         
-    }
-
-    post {
-        success {
-            echo "SUCCESSFUL"
-        }
-        failure {
-            echo "FAILED"
-        }
     }
 }
