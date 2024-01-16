@@ -10,13 +10,13 @@ pipeline {
             steps {
                 script {
                     // Bước lấy mã nguồn từ repository Git
-                   git branch: 'main', url: 'https://github.com/nhdang002/UIT-src.git'
+                    git branch: 'main', url: 'https://github.com/nhdang002/UIT-src.git'
                 }
             }
         }
 
         stage('Build and Push Docker Image') {
-            agent { node {label 'main'}}
+            agent any
             environment {
                 DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"
             }
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     // Bước chạy mô hình đã được huấn luyện
-                    sh "python run_trained_model.h5 ${MODEL_FILE}"
+                    sh "python run_trained_model.py ${MODEL_FILE}"
                 }
             }
         }
